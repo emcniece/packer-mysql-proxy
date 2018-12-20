@@ -1,0 +1,12 @@
+#cloud-config
+rancher:
+  services:
+    nginx-stream:
+      image: tekn0ir/nginx-stream
+      restart: always
+      volumes:
+      - /home/rancher/nginx/conf:/opt/nginx/stream.conf.d/
+      ports:
+      - 3306:3306
+  services_include:
+    amazon-ecs-agent: false
